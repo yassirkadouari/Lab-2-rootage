@@ -33,7 +33,7 @@ flowchart TD
 ```
 
 
-##Matrice de risques (8 risques)
+## Matrice de risques (8 risques)
 
 Perte totale de la garantie constructeur
 Exposition des données sensibles (clés API, mots de passe)
@@ -45,7 +45,7 @@ Contournement des protections SELinux et sandbox
 Risque légal en environnement professionnel
 
 
-##Mesures défensives (8 mesures)
+## Mesures défensives (8 mesures)
 
 Réseau isolé pour éviter toute communication non contrôlée
 Données fictives uniquement
@@ -57,19 +57,19 @@ Contrôle strict des APK installées
 Horodatage + captures systématiques
 
 
-##OWASP MASVS – 2 exigences résumées
+## OWASP MASVS – 2 exigences résumées
 
 STORAGE-1 : Les données sensibles doivent être stockées avec chiffrement approprié.
 NETWORK-1 : Toutes les communications doivent utiliser TLS avec validation stricte des certificats.
 
 
-##OWASP MASTG – 2 idées de tests
+## OWASP MASTG – 2 idées de tests
 
 Vérifier si l’application détecte le root (su, Magisk, /system rw) et bloque les fonctionnalités.
 Intercepter le trafic HTTPS après installation d’un certificat CA rooté.
 
 
-##Preuves techniques
+## Preuves techniques
 Capture 1 – Verified Boot State = orange
 <img width="962" height="329" alt="{BFA71AAD-4A2C-4C7A-8FBB-1797DD468621}" src="https://github.com/user-attachments/assets/8efce619-21f4-4d7b-b072-5d9c6a36049e" />
 
@@ -83,7 +83,7 @@ Capture 4 – uid=0(root) + disable-verity + reboot
 Capture 5 – Application de test en cours d’exécution sur l’AVD rooté
 <img width="925" height="902" alt="{ABCDFB53-7A3E-4CBC-A074-64C5EA615BF5}" src="https://github.com/user-attachments/assets/de350965-a8a6-4b44-b2d8-9962e02ff1ea" />
 
-##Fiche Environnement
+## Fiche Environnement
 
 Type : AVD Pixel 6.2 writable-system (Android Studio)
 Version Android : 12
@@ -94,7 +94,7 @@ Accès : ADB root + remount rw
 Preuve log : logcat_root_check.txt généré
 
 
-##Checklist Finale
+## Checklist Finale
 Début
 
 ✓Périmètre écrit
@@ -102,7 +102,7 @@ Début
 ✓ App de test installée
 ✓ Versions notées
 
-##Fin
+## Fin
 
 ✓ Données de test supprimées
 ✓ Reset/wipe effectué
