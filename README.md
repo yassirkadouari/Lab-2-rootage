@@ -33,7 +33,7 @@ flowchart TD
 ```
 
 
-Matrice de risques (8 risques)
+##Matrice de risques (8 risques)
 
 Perte totale de la garantie constructeur
 Exposition des données sensibles (clés API, mots de passe)
@@ -45,7 +45,7 @@ Contournement des protections SELinux et sandbox
 Risque légal en environnement professionnel
 
 
-Mesures défensives (8 mesures)
+##Mesures défensives (8 mesures)
 
 Réseau isolé pour éviter toute communication non contrôlée
 Données fictives uniquement
@@ -57,34 +57,36 @@ Contrôle strict des APK installées
 Horodatage + captures systématiques
 
 
-OWASP MASVS – 2 exigences résumées
+##OWASP MASVS – 2 exigences résumées
 
 STORAGE-1 : Les données sensibles doivent être stockées avec chiffrement approprié.
 NETWORK-1 : Toutes les communications doivent utiliser TLS avec validation stricte des certificats.
 
 
-OWASP MASTG – 2 idées de tests
+##OWASP MASTG – 2 idées de tests
 
 Vérifier si l’application détecte le root (su, Magisk, /system rw) et bloque les fonctionnalités.
 Intercepter le trafic HTTPS après installation d’un certificat CA rooté.
 
 
-Preuves techniques
+##Preuves techniques
 Capture 1 – Verified Boot State = orange
-<img src="images/01-verifiedbootstate-orange.png" alt="Capture 1 - ro.boot.verifiedbootstate = orange" width="800">
-Capture 2 – Mobexler : adb root + remount succeeded
-<img src="images/02-mobexler-root-remount.png" alt="Capture 2 - Mobexler root & remount" width="800">
-Capture 3 – Fastboot en attente (limitation émulateur)
-<img src="images/03-fastboot-waiting.png" alt="Capture 3 - fastboot waiting for any device" width="800">
-Capture 4 – uid=0(root) + disable-verity + reboot
-<img src="images/04-root-id-disable-verity.png" alt="Capture 4 - root id + disable-verity" width="800">
-Capture 5 – Application de test en cours d’exécution sur l’AVD rooté
-<img src="images/05-app-running.png" alt="Capture 5 - My Application running" width="800">
+<img width="962" height="329" alt="{BFA71AAD-4A2C-4C7A-8FBB-1797DD468621}" src="https://github.com/user-attachments/assets/8efce619-21f4-4d7b-b072-5d9c6a36049e" />
 
-Fiche Environnement
+Capture 2 – Mobexler : adb root + remount succeeded
+<img width="661" height="166" alt="{0D9E1194-8A8E-4BB2-AF54-DEF3A4816A19}" src="https://github.com/user-attachments/assets/0d8f7eff-63ca-4756-ae80-28bb73d5717f" />
+
+Capture 3 – Fastboot en attente (limitation émulateur)
+     A note apres plusieurs essaie sur plusieur emulateur, j'en ai conclu apres mes recherche que les emulateur android n'emule pas le bootloader et du coup c'est impossible d'utiliser fastboot dans ce cas, il faudra utiliser un vrai appareil android que je n'ai pas dans ma disposition
+Capture 4 – uid=0(root) + disable-verity + reboot
+<img width="773" height="257" alt="{E9FF2847-795D-4F25-8144-4DF3EE57C22B}" src="https://github.com/user-attachments/assets/ec508143-a177-4267-a46c-2588ce0e86d9" />
+Capture 5 – Application de test en cours d’exécution sur l’AVD rooté
+<img width="925" height="902" alt="{ABCDFB53-7A3E-4CBC-A074-64C5EA615BF5}" src="https://github.com/user-attachments/assets/de350965-a8a6-4b44-b2d8-9962e02ff1ea" />
+
+##Fiche Environnement
 
 Type : AVD Pixel 6.2 writable-system (Android Studio)
-Version Android : 14
+Version Android : 12
 Root : Activé (uid=0(root))
 Verity : Désactivé (verity is already disabled)
 Verified Boot State : orange
@@ -92,20 +94,19 @@ Accès : ADB root + remount rw
 Preuve log : logcat_root_check.txt généré
 
 
-Checklist Finale
+##Checklist Finale
 Début
 
- Périmètre écrit
- AVD neuf
- App de test installée
- Versions notées
+✓Périmètre écrit
+✓ AVD neuf
+✓ App de test installée
+✓ Versions notées
 
-Fin
+##Fin
 
- Données de test supprimées
- Reset/wipe effectué
- Preuves du reset sauvegardées
- Rapport + traçabilité sauvegardés
- Aucun compte personnel utilisé
+✓ Données de test supprimées
+✓ Reset/wipe effectué
+✓ Preuves du reset sauvegardées
+✓ Rapport + traçabilité sauvegardés
+✓ Aucun compte personnel utilisé
 
-Signature : yassie – 01 mars 2026
